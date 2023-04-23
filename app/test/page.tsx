@@ -3,7 +3,6 @@ import React from "react";
 
 const Test = async () => {
   let pods = await fetchPodcasts();
-  console.log(pods);
 
   return (
     <div className="w-full">
