@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="max-w-5xl mb-5 lg:mx-auto">{children}</body>
+        <body className="max-w-5xl mb-5 lg:mx-auto">
+          <Header />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.4",
+    "@next/font": "^13.3.1",
     "@sanity/vision": "^3.9.0",
     "@types/node": "18.15.13",
     "@types/react": "18.0.38",
@@ -22,6 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-button": "^0.7.2",
+    "react-icons": "^4.8.0",
     "sanity": "^3.9.0",
     "typescript": "5.0.4"
   },
