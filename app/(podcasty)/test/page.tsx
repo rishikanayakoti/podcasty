@@ -1,4 +1,4 @@
-import fetchPodcasts from "@/sanity/utils/fetchPodcasts";
+import { fetchPodcasts } from "@/sanity/utils/podcasts";
 import React from "react";
 
 const Test = async () => {
