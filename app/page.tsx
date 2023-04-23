@@ -10,6 +10,8 @@ import {
 } from "@clerk/nextjs/app-beta";
 
 export default function Home() {
+  const { userId } = auth();
+  console.log(userId);
   return (
     <div className="">
       {/* Header */}
