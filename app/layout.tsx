@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="max-w-5xl mb-5 lg:mx-auto">{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className="max-w-5xl mb-5 lg:mx-auto">{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
