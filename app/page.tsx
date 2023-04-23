@@ -1,11 +1,18 @@
-// TODO: Place your components in the respective
-// order
+// TODO: Place your components in the respective order
+
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  UserProfile,
+  auth,
+  currentUser,
+} from "@clerk/nextjs/app-beta";
 
 export default function Home() {
   return (
     <div className="">
       {/* Header */}
-      header
       {/* Treding */}
       {/* Card Components */}
       {/* Footer */}
