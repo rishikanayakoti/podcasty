@@ -1,12 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Mabry+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mabry+Pro&display=swap");
 
-/* ... */
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
 
 body {
-    /* color: rgb(var(--foreground-rgb)); */
-    font-family: 'Mabry Pro', sans-serif;
-    background-color: #F4F4F1;
+  /* color: rgb(var(--foreground-rgb)); */
+  font-family: "Mabry Pro", sans-serif;
+  background-color: #f4f4f1;
 }
