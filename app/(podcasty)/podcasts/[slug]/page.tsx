@@ -1,7 +1,13 @@
 import React from "react";
-import "tailwindcss/tailwind.css";
 import Image from "next/image";
 import { fetchPodcast } from "@/sanity/utils/podcasts";
+import {
+  fetchFavoriteCount,
+  fetchFavoritedByUser,
+  fetchuserFavoritePodcasts,
+} from "@/firestore/utils/favorite";
+import { SignedIn, SignedOut, auth } from "@clerk/nextjs/app-beta";
+import AddToFavoriteButton, { RemoveFromFavorite } from "./Favorite";
 
 type Slug = {
   params: {
@@ -9,7 +15,13 @@ type Slug = {
   };
 };
 
+export interface FavoriteProps {
+  _id: string;
+  userId: string;
+}
+
 export interface PodcastProps {
+  _id: string;
   title: string;
   _slug: string;
   author: string;
@@ -21,12 +33,17 @@ export interface PodcastProps {
 }
 
 const PodcastPage = async ({ params: { slug } }: Slug) => {
-  const { title, author, desc, bannerURL, audioURL, categories } =
+  const { userId } = auth();
+  const { title, author, desc, bannerURL, audioURL, categories, _id } =
     await fetchPodcast(slug);
+  const favorites = await fetchFavoriteCount(_id);
+  const favoriteByUser = await fetchFavoritedByUser(userId!, _id);
+  console.log(favoriteByUser);
+
   return (
     <div className="body-font font-mabry">
       <p className="text-center my-4 text-4xl font-bold">{title}</p>
-      <div className="flex flex-col justify-center lg:flex lg:flex-row lg:justify-evenly lg:items-center h-[280px]">
+      <div className="mb-5 flex bg-[#f4f4f1] flex-col justify-center lg:flex lg:flex-row lg:justify-evenly lg:items-center h-[280px]">
         <div className="border-2 border-black rounded-lg text-center w-full p-3 lg:mr-3 hover:-translate-x-1 hover:-translate-y-1 duration-200 hover:shadow-lg">
           <div className="w-full h-[196px] relative rounded-lg">
             <Image src={bannerURL} alt={title} fill />
@@ -43,9 +60,24 @@ const PodcastPage = async ({ params: { slug } }: Slug) => {
               <span key={index}>{category}</span>
             ))}
           </p>
-          <p className="pb-1">Favorites: </p>
+          <p className="pb-1">Favorites: {favorites ?? <span>loading</span>}</p>
         </div>
       </div>
+      <div className="my-4">
+        <SignedIn>
+          {favoriteByUser > 0 && (
+            /* @ts-ignore */
+            <RemoveFromFavorite userId={userId!} _id={_id} />
+          )}
+          {favoriteByUser == 0 && (
+            /* @ts-ignore */
+            <AddToFavoriteButton _id={_id} userId={userId!} />
+          )}
+        </SignedIn>
+      </div>
+      <SignedOut>
+        <p>Login to add to favorites</p>
+      </SignedOut>
       <div className="flex-col my-3">
         <p className="text-xl font-semibold">Description</p>
         <p className="p-2 bg-white border-2 border-black rounded-lg mt-2">

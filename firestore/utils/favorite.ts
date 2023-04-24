@@ -1,6 +1,8 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   getCountFromServer,
   getDocs,
   query,
@@ -8,13 +10,15 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
-interface FavoriteProps {
-  podcastId: string;
-  userId: string;
-}
-
-export const addToFavorite = async ({ podcastId, userId }: FavoriteProps) => {
+export const addToFavorite = async (podcastId: string, userId: string) => {
   const collectionRef = collection(db, "likes");
+  const q = query(
+    collectionRef,
+    where("userId", "==", userId),
+    where("podcastId", "==", podcastId)
+  );
+  const count = (await getCountFromServer(q)).data().count;
+  if (count > 0) return;
   const data = {
     podcastId,
     userId,
@@ -22,7 +26,19 @@ export const addToFavorite = async ({ podcastId, userId }: FavoriteProps) => {
   await addDoc(collectionRef, data);
 };
 
-export const userFavoritePodcasts = async (
+export const removeFromFavorite = async (podcastId: string, userId: string) => {
+  const collectionRef = collection(db, "likes");
+  const q = query(
+    collectionRef,
+    where("userId", "==", userId),
+    where("podcastId", "==", podcastId)
+  );
+  const docRef = (await getDocs(q)).docs[0].ref;
+  console.log(docRef);
+  await deleteDoc(docRef);
+};
+
+export const fetchuserFavoritePodcasts = async (
   userId: string
 ): Promise<string[]> => {
   const collectionRef = collection(db, "likes");
@@ -35,9 +51,25 @@ export const userFavoritePodcasts = async (
   return listOfPodcasts;
 };
 
-export const countOfFavorites = async (podcastId: string): Promise<number> => {
+export const fetchFavoriteCount = async (
+  podcastId: string
+): Promise<number> => {
   const collectionRef = collection(db, "likes");
   const q = query(collectionRef, where("podcastId", "==", podcastId));
+  const snapshot = await getCountFromServer(q);
+  return snapshot.data().count;
+};
+
+export const fetchFavoritedByUser = async (
+  userId: string,
+  podcastId: string
+) => {
+  const collectionRef = collection(db, "likes");
+  const q = query(
+    collectionRef,
+    where("podcastId", "==", podcastId),
+    where("userId", "==", userId)
+  );
   const snapshot = await getCountFromServer(q);
   return snapshot.data().count;
 };

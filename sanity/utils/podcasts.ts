@@ -7,6 +7,7 @@ export const client = createClient({
 
 export const fetchPodcasts = async (): Promise<PodcastProps[]> => {
   const query = groq`*[_type == "podcast"] {
+    _id,
     title,
     "author": author -> name,
     "_slug": slug.current,
@@ -19,6 +20,7 @@ export const fetchPodcasts = async (): Promise<PodcastProps[]> => {
 
 export const fetchPodcast = async (slug: string): Promise<PodcastProps> => {
   const query = groq`*[_type == "podcast" && slug.current == "${slug}"][0] {
+    _id,
     title,
     "author": author -> name,
     "_slug": slug.current,

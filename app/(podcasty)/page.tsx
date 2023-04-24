@@ -6,12 +6,12 @@ export default async function Home() {
   const podcasts = await fetchPodcasts();
 
   return (
-    <div>
+    <div className="flex flex-col">
       {/* @ts-ignore */}
       <Trending />
       {/* Main Podcasts */}
       <h1 className="font-bold text-xl">Recommended</h1>
-      <div className="w-full flex justify-start overflow-x-sroll no-scrollbar">
+      <div className="w-full flex justify-start items-center flex-wrap">
         {podcasts.map((podcast) => {
           return <Card key={podcast._slug} {...podcast} />;
         })}
