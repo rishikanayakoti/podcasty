@@ -5,7 +5,12 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["cdn.sanity.io"],
+    domains: [
+      "cdn.sanity.io",
+      "images.unsplash.com",
+      "plus.unsplash.com",
+      "unsplash.com",
+    ],
   },
 };
 
