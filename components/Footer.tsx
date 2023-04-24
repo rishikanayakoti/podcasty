@@ -4,13 +4,13 @@ function Footer() {
   return (
     <div>
     {/* Footer container */}
-    <footer className="bg-neutral-100 text-center rounded-xl dark:bg-neutral-600">
+    <footer className="bg-[#78716c] text-center rounded-t-xl mt-3 dark:bg-neutral-600">
         <div className="container m-auto pt-5 pb-3 px-12">
             <div className="container">
                 {/* <!--First section--> */}
                 <div className=" text-sm">
                   <h5
-                    className="mb-2 font-bold uppercase text-neutral-800 dark:text-neutral-200">
+                    className="mb-2 font-bold uppercase text-white dark:text-neutral-200">
                     About Us
                   </h5>
                   <div className='flex mx-auto w-[60%] text-white justify-evenly items-center'>
@@ -120,7 +120,7 @@ function Footer() {
         </div>
 
         {/* Copyright section */}
-        <div className="bg-neutral-200 p-4 text-center rounded-b-xl text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">
+        <div className="bg-[#000000] p-4 text-center text-white dark:bg-neutral-700 dark:text-neutral-200">
             © 2023 Podcasty, All rights reserved.
         </div>
 </footer>
