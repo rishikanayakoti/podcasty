@@ -4,7 +4,6 @@ import { fetchPodcast } from "@/sanity/utils/podcasts";
 import {
   fetchFavoriteCount,
   fetchFavoritedByUser,
-  fetchuserFavoritePodcasts,
 } from "@/firestore/utils/favorite";
 import { SignedIn, SignedOut, auth } from "@clerk/nextjs/app-beta";
 import AddToFavoriteButton, { RemoveFromFavorite } from "./Favorite";
