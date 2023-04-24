@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Footer from "@/components/Footer";
 import Trending from "@/components/Trending";
 import { fetchPodcasts } from "@/sanity/utils/podcasts";
 
@@ -18,6 +19,7 @@ export default async function Home() {
       </div>
       {/* Card Components */}
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
