@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="max-w-5xl mb-5 lg:mx-auto">
+        <body className="max-w-5xl lg:mx-auto">
           <Header />
           {children}
         </body>
