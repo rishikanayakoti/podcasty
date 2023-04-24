@@ -50,7 +50,7 @@ const PodcastPage = async ({ params: { slug } }: Slug) => {
             <Image className="rounded-lg" src={bannerURL} alt={title} fill/>
           </div>
           <div className="w-full flex justify-center">
-            <audio src={audioURL} controls />
+            <audio src={audioURL} controls/>
           </div>
         </div>
         <div className="border-2 border-black rounded-lg w-[50%] flex flex-col h-full p-3 bg-white hover:-translate-x-1 hover:-translate-y-1 duration-200 hover:border-r-4 hover:border-b-4 hover:border-black">
