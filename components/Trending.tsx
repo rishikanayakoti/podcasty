@@ -24,7 +24,7 @@ const Trending = async () => {
       <div className="mx-2 text-xl font-bold w-[100px]">Top Trending</div>
       <div className="border-l-black border-l-2 flex items-center overflow-x-scroll no-scrollbar p-2 rounded-r-lg">
         {categories.map((category) => {
-          return <TrendingChip {...category} />;
+          return <TrendingChip key={category.title} {...category} />;
         })}
       </div>
     </div>
