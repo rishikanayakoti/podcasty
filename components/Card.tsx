@@ -12,12 +12,12 @@ export interface CardProps {
 
 function Card({ title, author, desc, _slug, bannerURL }: CardProps) {
   return (
-    <div className="min-w-[320px] max-w-[320px] min-h-[400px] bg-white max-h-[400px] flex flex-col m-2 border-2 border-gray-400 rounded-lg shadow">
-      <div className="w-full h-[200px] relative rounded-lg">
+    <div className="min-w-[320px] max-w-[320px]  bg-white flex flex-col m-2 border-2 border-gray-400 rounded-lg shadow">
+      <Link href={`/podcasts/${_slug}`} className="w-full relative rounded-lg min-h-[200px] max-h-[200px]">
         <Image fill className="rounded-t-lg" src={bannerURL} alt={title} />
-      </div>
-      <div className="h-full border-t border-black px-3 py-1 flex flex-col justify-between">
-        <div className="">
+      </Link>
+      <div className=" border-t border-black p-3 flex flex-col">
+        <div className="min-h-[150px] max-h-[150px] justify-between">
           <Link
             href={`/podcasts/${_slug}`}
             className="mb-0.5 text-xl font-bold tracking-tight text-gray-900 hover"
@@ -33,17 +33,17 @@ function Card({ title, author, desc, _slug, bannerURL }: CardProps) {
           </p>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-row justify-between">
           <Link
             href={`/podcasts/${_slug}`}
             type="button"
-            className="w-[100px] p-2 text-white bg-black flex items-center justify-evenly rounded-md"
+            className="w-[100px] p-2 text-white bg-black flex items-center justify-evenly rounded-md hover:bg-[#77c9ed] hover:text-black hover:border-black hover:border-b-2 hover:border-r-2"
           >
             <p>Listen</p>
           </Link>
           <button
             type="button"
-            className="text-white focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full border border-black text-sm px-1 py-1 mr-2 mb-2"
+            className="text-white focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg border border-black text-sm px-1 py-1 mr-2 mb-2 hover:bg-[#77c9ed] hover:text-black hover:border-black hover:border-b-2 hover:border-r-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
