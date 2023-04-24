@@ -20,7 +20,7 @@ export default function RootLayout({
       <html lang="en">
         <body className="max-w-5xl lg:mx-auto">
           <Header />
-          {children}
+          <div className="mx-3 lg:mx-auto">{children}</div>
         </body>
       </html>
     </ClerkProvider>
