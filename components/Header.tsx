@@ -1,7 +1,6 @@
 import React from "react";
 import { FiMenu } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
-import { BsFillMoonFill } from "react-icons/bs";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs/app-beta";
 import LoginButton from "./LoginButton";
 
