@@ -23,7 +23,6 @@ const Header = () => {
       </div>
 
       <div className="flex justify-end items-center">
-        <BsFillMoonFill className="mr-4 h-6 cursor-pointer" />
         <SignedIn>
           <UserButton />
         </SignedIn>
